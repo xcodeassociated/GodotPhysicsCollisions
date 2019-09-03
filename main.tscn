@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Camera.gd" type="Script" id=1]
+[ext_resource path="res://untitled.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://transparent.tres" type="Material" id=3]
+[ext_resource path="res://grz.gd" type="Script" id=4]
+[ext_resource path="res://MaterialPoints.gd" type="Script" id=5]
+[ext_resource path="res://Mass.gd" type="Script" id=6]
+[ext_resource path="res://label.gd" type="Script" id=7]
+
+[sub_resource type="SphereMesh" id=1]
+
+[node name="Node" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+editor/display_folded = true
+
+[node name="OmniLight" type="OmniLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97003, 0 )
+
+[node name="Camera" type="Camera" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+script = ExtResource( 1 )
+
+[node name="grz" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="MaterialPoints" type="Node" parent="."]
+editor/display_folded = true
+script = ExtResource( 5 )
+
+[node name="ASP" type="AudioStreamPlayer" parent="MaterialPoints"]
+
+[node name="Mass" type="MeshInstance" parent="MaterialPoints"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+script = ExtResource( 6 )
+
+[node name="label" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 71.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+

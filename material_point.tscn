@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://material_point.gd" type="Script" id=1]
+[ext_resource path="res://16981_1461335347.ogg" type="AudioStream" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="CylinderMesh" id=2]
+
+[sub_resource type="PrismMesh" id=3]
+
+[node name="material_point" type="Node"]
+script = ExtResource( 1 )
+
+[node name="point" type="MeshInstance" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="ASP" type="AudioStreamPlayer" parent="point"]
+stream = ExtResource( 2 )
+
+[node name="arrow" type="MeshInstance" parent="point"]
+transform = Transform( 0.2, 0, 0, 0, 10, 0, 0, 0, 0.2, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="arrowhead" type="MeshInstance" parent="point"]
+transform = Transform( 0.6, 0, 0, 0, 1, 0, 0, 0, 0.6, 0, 0, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
